@@ -1,4 +1,4 @@
-import alumnos from '../data/alumnos.js'
+import {alumnos} from '../data/alumnos.js'
 
 /// Obtener todos los alumnos
 export const obtenerAlumnos = (req, res) => {
