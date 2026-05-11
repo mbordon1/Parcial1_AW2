@@ -1,0 +1,25 @@
+{
+  "name": "parcial1_aw2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbordon1/Parcial1_AW2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/mbordon1/Parcial1_AW2/issues"
+  },
+  "homepage": "https://github.com/mbordon1/Parcial1_AW2#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {}
+}
