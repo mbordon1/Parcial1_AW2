@@ -1,3 +1,9 @@
+/*
+ Módulo de datos
+ Contiene el conjunto de datos estáticos que representa los alumnos de la Escuela de Danzas CREAR
+ Actúa como fuente de datos de la aplicación en reemplazo de una base de datos
+ */
+
 export const alumnos = [
     {
         id: 1,

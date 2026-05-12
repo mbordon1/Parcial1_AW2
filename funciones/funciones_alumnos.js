@@ -1,3 +1,10 @@
+/*
+ Módulo de funciones para el recurso - alumnos
+ Contiene la lógica de negocio de cada endpoint:
+ procesa la petición, opera sobre los datos y construye la respuesta al cliente
+ Separa la lógica de las rutas para mantener un código limpio y modular
+*/
+
 import {alumnos} from '../data/alumnos.js'
 
 /// Obtener todos los alumnos
