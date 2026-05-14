@@ -1,0 +1,14 @@
+### GET todos los alumnos
+GET http://localhost:3000/alumnos
+
+### GET alumno por ID
+GET http://localhost:3000/alumnos/1
+
+### GET alumno con ID inválido 
+GET http://localhost:3000/alumnos/abc
+
+### GET alumno inexistente 
+GET http://localhost:3000/alumnos/99
+
+### GET procedimiento - contar por grupo
+GET http://localhost:3000/contarPorGrupo

@@ -1,7 +1,7 @@
 /*
  Módulo de middleware propio
  Implementa un logger que intercepta cada petición HTTP recibida antes de que llegue al handler de la ruta correspondiente
- Registra en consola el método HTTP, la URL solicitada y la fecha/hora, lo que facilita el seguimiento del flujo de la aplicación
+ Registra en consola el método HTTP, la URL solicitada y la fecha/hora, lo que facilita el seguimiento del flujo de la aplicacion
  */
 
 export const logger = (req, res, next) => {

@@ -4,10 +4,9 @@
  */
 
 import express from 'express'
-import { logger } from './middlewares/loggerPeticiones.js'
-import { ruta  } from './routes/rutas_alumnos.js'
-import { contarAlumnosPorGrupo } from './funciones/funciones_alumnos.js'
-import { validarId } from './middlewares/validarId.js'
+import { logger } from './middlewares/loggerPeticiones.mjs'
+import { ruta  } from './routes/rutas_alumnos.mjs'
+import * as controlador from './modulos/alumnos/controlador.alumnos.mjs'
 
 const app = express()
 const PORT = 3000
@@ -16,11 +15,14 @@ const PORT = 3000
 app.use(express.json()) 
 // Middleware propio - registra en consola cada peticion recibida
 app.use(logger)
-// El middleware validarId se ejecuta antes del handler
-app.use('/alumnos', validarId, ruta)
+// Rutas de la API REST para el recurso alumnos
+app.use('/alumnos', ruta)
 
-app.get('/contarAlumnosPorGrupo', contarAlumnosPorGrupo)
+// Endpoint de procedimiento - no sigue los principios REST de rutas
+// porque utiliza un verbo en lugar de un sustantivo como identificador del recurso
+app.get('/contarPorGrupo', controlador.contarPorGrupo)
 
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en http://localhost:${PORT}`)
 })
+
