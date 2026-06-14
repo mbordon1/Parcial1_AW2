@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Procedimiento</title>
+  <link rel="stylesheet" href="/estilos.css">
+</head>
+<body>
+  <nav>
+    <a href="/alumnos.html">Items</a>
+    <a href="/procedimiento.html">Procedimiento</a>
+    <a href="/cerrar-sesion">Cerrar sesión</a>
+  </nav>
+
+  <main>
+    <h1>Procedimiento: Contar alumnos por grupo</h1>
+    <p>
+      Este procedimiento consulta la lista de alumnos y devuelve
+      la cantidad de alumnos registrados en cada grupo de baile.
+    </p>
+
+    <button id="btn-ejecutar">Ejecutar procedimiento</button>
+
+    <p id="estado"></p>
+    <div id="resultado"></div>
+  </main>
+
+  <script>
+    document.getElementById('btn-ejecutar').addEventListener('click', () => {
+      fetch('/contarPorGrupo')
+        .then(res => {
+          if (res.redirected) {
+            window.location.href = res.url
+            return
+          }
+          return res.json()
+        })
+        .then(data => {
+          if (!data) return
+          document.getElementById('estado').textContent = 'Procedimiento ejecutado con éxito.'
+          document.getElementById('resultado').innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`
+        })
+        .catch(err => {
+          document.getElementById('estado').textContent = 'Error al ejecutar el procedimiento.'
+          console.error('Error:', err)
+        })
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alumno Detalle</title>
+  <link rel="stylesheet" href="/estilos.css">
+</head>
+<body>
+  <nav>
+    <a href="/alumnos.html">Items</a>
+    <a href="/procedimiento.html">Procedimiento</a>
+    <a href="/cerrar-sesion">Cerrar sesión</a>
+  </nav>
+
+  <main>
+    <h1>Detalle del Alumno</h1>
+    <div id="detalle"></div>
+    <a href="/alumnos.html">← Volver a la lista</a>
+  </main>
+
+  <script>
+    // leer el parametro ?id= de la URL
+    const params = new URLSearchParams(window.location.search)
+    const id = params.get('id')
+
+    if (!id) {
+      document.getElementById('detalle').textContent = 'No se especificó un ID.'
+    } else {
+      fetch(`/alumnos/${id}`)
+        .then(res => {
+          if (res.redirected) {
+            window.location.href = res.url
+            return
+          }
+          return res.json()
+        })
+        .then(data => {
+          if (!data) return
+          if (data.error) {
+            document.getElementById('detalle').textContent = data.error
+            return
+          }
+          const alumno = data.datos[0]
+          document.getElementById('detalle').innerHTML = `
+            <p><strong>ID:</strong> ${alumno.id}</p>
+            <p><strong>Nombre:</strong> ${alumno.nombre}</p>
+            <p><strong>Apellido:</strong> ${alumno.apellido}</p>
+            <p><strong>Edad:</strong> ${alumno.edad}</p>
+            <p><strong>Grupo:</strong> ${alumno.grupo}</p>
+          `
+        })
+        .catch(err => console.error('Error al obtener alumno:', err))
+    }
+  </script>
+</body>
+</html>
