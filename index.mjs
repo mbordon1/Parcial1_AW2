@@ -1,7 +1,6 @@
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
-import { logger } from './middlewares/loggerPeticiones.mjs'
 import { verificarToken } from './middlewares/verificarToken.mjs'
 import rutasAutenticacion from './routes/rutas_autenticacion.mjs'
 import { ruta as rutasAlumnos } from './routes/rutas_alumnos.mjs'
@@ -15,11 +14,9 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
-app.use(logger)
-
 
 app.use('/', rutasAutenticacion)
-// form login
+app.use(express.static('public'))            // CSS funcionando en todas las rutas
 app.use('/login', express.static('fronts/login'))
 
 app.use(verificarToken)

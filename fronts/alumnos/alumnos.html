@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alumnos</title>
   <link rel="stylesheet" href="/estilos.css">
 </head>
+
 <body>
   <nav>
     <a href="/alumnos.html">Items</a>
@@ -33,11 +35,12 @@
         data.datos.forEach(alumno => {
           const li = document.createElement('li')
           // enlace a alumno.html con query string ?id=X
-          li.innerHTML = `<a href="/alumno.html?id=${alumno.id}">${alumno.nombre} ${alumno.apellido} — Grupo: ${alumno.grupo}</a>`
+          li.innerHTML = `<a href="/alumno_detalle.html?id=${alumno.id}">${alumno.nombre} ${alumno.apellido} — Grupo: ${alumno.grupo}</a>`
           lista.appendChild(li)
         })
       })
       .catch(err => console.error('Error al obtener alumnos:', err))
   </script>
 </body>
+
 </html>
