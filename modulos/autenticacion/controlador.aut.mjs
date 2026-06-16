@@ -16,7 +16,7 @@ export async function login(req, res) {
         if (!usuarioDB) {
             return res.status(401).send('Credenciales incorrectas')
         }
-
+        
         const claveValida = await bcrypt.compare(pass, usuarioDB.password_hash)
         if (!claveValida) {
             return res.status(401).send('Credenciales incorrectas')

@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const { Pool } = pg
-
+// pool reutiliza conexiones abiertas en lugar de crear una nueva, mejorando el rendimiento de la aplicacion
 const pool = new Pool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
